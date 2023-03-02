@@ -20,7 +20,7 @@ function SaveFace() {
 
   React.useEffect(() => {
     const loadModels = async () => {
-      const MODEL_URL = '/models/';
+      const MODEL_URL = '/facerecognition/models/';
 
       Promise.all([
         faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
