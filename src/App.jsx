@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
        <Navbar/>
       <Routes>
-        <Route path="/" element={<FaceDetect/>} exact/>
-        <Route path="/save" element={<SaveFace/>} exact/>
+        <Route path="/facerecognition" element={<FaceDetect/>} exact/>
+        <Route path="/facerecognition/save" element={<SaveFace/>} exact/>
       </Routes>
     </BrowserRouter>  
   );

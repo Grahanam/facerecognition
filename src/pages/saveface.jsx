@@ -1,5 +1,6 @@
 import * as faceapi from 'face-api.js';
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 import '../index.css'
 
 function SaveFace() {
@@ -7,6 +8,7 @@ function SaveFace() {
     name:"",
     facedata:""
 })
+ const navigate=useNavigate()
   const [faceid,setfaceid]=React.useState()
   const [modelsLoaded, setModelsLoaded] = React.useState(false);
   const [captureVideo, setCaptureVideo] = React.useState(false);
@@ -89,7 +91,7 @@ function SaveFace() {
     // prevents the submit button from refreshing the page
     event.preventDefault();
     localStorage.setItem('dataKey', JSON.stringify(data));
-    console.log(data);
+    navigate('/facerecognition')
   };
 
   return (
