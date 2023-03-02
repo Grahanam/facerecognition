@@ -64,7 +64,6 @@ function SaveFace() {
           .withFaceLandmarks().withFaceDescriptor();
         
         if(selfieFacedetection){
-            console.log(selfieFacedetection.descriptor)
             setfaceid(Array.from(selfieFacedetection.descriptor))
             setdata({["facedata"]:Array.from(selfieFacedetection.descriptor)})
             closeWebcam()

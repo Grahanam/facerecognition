@@ -15,9 +15,7 @@ function FaceDetect() {
 
   React.useEffect(() => {
     const loadModels = async () => {
-      const MODEL_URL = 'https://grahanam.github.io/facerecognition/undefined/models/';
-    //   process.env.PUBLIC_URL +'/models/'
-
+      const MODEL_URL = '/facerecognition/models/';
       Promise.all([
         faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
         faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
