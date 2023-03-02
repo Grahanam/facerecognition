@@ -6,8 +6,8 @@ const Navbar=()=>{
         <>
         <div className="navbar">
             <div>
-            <span><Link to="/">Home</Link></span>
-            <span><Link to="/save">SaveFace</Link></span>
+            <span><Link to="/facerecognition">Home</Link></span>
+            <span><Link to="/facerecognition/save">SaveFace</Link></span>
             </div>
             <div><h4>Face Recognition</h4></div>
         </div>
