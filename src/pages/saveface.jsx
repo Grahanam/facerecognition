@@ -2,14 +2,14 @@ import * as faceapi from 'face-api.js';
 import React from 'react';
 import {useNavigate} from 'react-router-dom'
 import '../index.css'
+import '../App.css'
 
 function SaveFace() {
   const [data,setdata]=React.useState({
     name:"",
     facedata:""
 })
- const navigate=useNavigate()
-  const [faceid,setfaceid]=React.useState()
+  const navigate=useNavigate()
   const [modelsLoaded, setModelsLoaded] = React.useState(false);
   const [captureVideo, setCaptureVideo] = React.useState(false);
 
@@ -27,13 +27,14 @@ function SaveFace() {
         faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
         faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
         faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
-        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+        // faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
       ]).then(setModelsLoaded(true));
     }
     loadModels();
   }, []);
 
   const startVideo = () => {
+    setdata({["facedata"]:""})
     setCaptureVideo(true);
     navigator.mediaDevices
       .getUserMedia({ video: { width: 300 } })
@@ -64,7 +65,6 @@ function SaveFace() {
           .withFaceLandmarks().withFaceDescriptor();
         
         if(selfieFacedetection){
-            setfaceid(Array.from(selfieFacedetection.descriptor))
             setdata({["facedata"]:Array.from(selfieFacedetection.descriptor)})
             closeWebcam()
         }
@@ -75,7 +75,7 @@ function SaveFace() {
         canvasRef && canvasRef.current && faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
         // canvasRef && canvasRef.current && faceapi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
       }
-    }, 1)
+    }, 10)
   }
 
   const closeWebcam = () => {
@@ -94,7 +94,7 @@ function SaveFace() {
   };
 
   return (
-    <div>
+    <div className='mainbody'>
       <div><h3>Save your Face Data</h3></div>
       <div style={{ display:'flex',flexDirection:'row', justifyContent:'center',alignItems:'center', padding: '10px' }}>
         {
@@ -111,7 +111,7 @@ function SaveFace() {
       {
         captureVideo ?
           modelsLoaded ?
-            <div>
+            <div style={{width:'100vw',}}>
               <div style={{ display: 'flex', justifyContent: 'center',alignItems:'center', padding: '10px' }}>
                 <video ref={videoRef} height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay} style={{ borderRadius: '10px' }} />
                 <canvas ref={canvasRef} style={{ position: 'absolute' }} />

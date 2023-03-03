@@ -1,6 +1,7 @@
 import * as faceapi from 'face-api.js';
 import React from 'react';
 import '../index.css'
+import '../App.css'
 
 function FaceDetect() {
   const [matchfound,setmatchfound]=React.useState(false)
@@ -81,7 +82,7 @@ function FaceDetect() {
 
   return (
     <>
-    <div className='body'>
+    <div className='mainbody'>
       <div style={{ textAlign: 'center', padding: '10px' }}>
         {
           captureVideo && modelsLoaded ?
@@ -98,7 +99,7 @@ function FaceDetect() {
       {
         captureVideo ?
           modelsLoaded ?
-            <div>
+            <div style={{width:'100vw',}}>
               <div style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
                 <video ref={videoRef} height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay} style={{ borderRadius: '10px' }} />
                 <canvas ref={canvasRef} style={{ position: 'absolute' }} />

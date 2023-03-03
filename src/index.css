@@ -73,7 +73,7 @@ button:focus-visible {
   overflow: hidden;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   display: flex;  
@@ -85,3 +85,5 @@ button:focus-visible {
 .navbar div{
   padding: 10px;
 }
+
+
